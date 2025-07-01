@@ -2,3 +2,4 @@ langchain-mcp-adapters
 langchain[openai]
 langgraph
 mcp
+langchain.embeddings
