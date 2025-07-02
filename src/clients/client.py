@@ -55,9 +55,9 @@ class Client:
         history = []
         for turn in chat_messages:
             if turn["role"] == "user":
-                history.append(HumanMessage(content = turn["message"]))
+                history.append(HumanMessage(content = turn["content"][0]["text"]))
             elif turn["role"] == "assistant":
-                history.append(AIMessage(content = turn["message"]))
+                history.append(AIMessage(content = turn["content"][0]["text"]))
                 
         # Create the React agent with the chat model, tools, and system message
         agent = create_react_agent(
