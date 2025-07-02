@@ -1,10 +1,8 @@
-import asyncio
-
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.prebuilt import create_react_agent
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
-from langchain_core.messages import SystemMessage
+from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from src.memories.memory import Memory
 from src.prompts.prompt import Prompt
 from src.states.chat_state import ChatMessage
@@ -50,9 +48,17 @@ class Client:
         system_message = SystemMessage(content=f"{system_prompt}")
         
         # Initialize the chat model
-        # Ensure you have the correct model name and configuration for your Azure OpenAI instance
         llm = init_chat_model("azure_openai:gpt-4o-mini")
         
+        # Prepare the chat history from the chat messages
+        # Convert chat_messages to a list of HumanMessage and AIMessage
+        history = []
+        for turn in chat_messages:
+            if turn["role"] == "user":
+                history.append(HumanMessage(content = turn["message"]))
+            elif turn["role"] == "assistant":
+                history.append(AIMessage(content = turn["message"]))
+                
         # Create the React agent with the chat model, tools, and system message
         agent = create_react_agent(
             llm,
@@ -62,9 +68,9 @@ class Client:
         
         # Invoke the agent with a user message
         response = await agent.ainvoke(
-            input = chat_messages[-1],  # Use the last user message as input
+            input = {"messages": history},
         )
         
-        print(response["messages"][-1].content)
+        return response["messages"][-1].content
         
         
