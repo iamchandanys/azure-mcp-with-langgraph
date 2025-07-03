@@ -2,4 +2,5 @@ langchain-mcp-adapters
 langchain[openai]
 langgraph
 mcp
-langchain.embeddings
+# langchain.embeddings
+azure-cosmos

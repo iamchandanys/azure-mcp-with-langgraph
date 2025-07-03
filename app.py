@@ -4,6 +4,7 @@ import uuid
 from src.states.chat_state_v2 import ChatStateV2
 from src.clients.client import Client
 from datetime import datetime, timezone
+from src.services.cosmos_service.chat_repository import ChatRepository
 
 class Chatbot:
     def __init__(self, user_id: str):
