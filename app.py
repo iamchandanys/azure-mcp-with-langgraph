@@ -7,18 +7,27 @@ from datetime import datetime, timezone
 from src.services.cosmos_service.chat_repository import ChatRepository
 
 class Chatbot:
-    def __init__(self, user_id: str):
+    def __init__(self):
         utc_now = datetime.now(timezone.utc).isoformat()
         
         self.chat_state = ChatStateV2(
             id=str(uuid.uuid4()),
-            client_id=user_id,
-            product_id="mcp-with-langgraph",
+            client_id="81b2e936-9139-4324-b39a-dbf299752365", # Todo: Later store this in emc.b2b.api
+            product_id="e03a6aaf-b9e6-4a9e-bd1b-5d56df2949ff", # Todo: Later store this in emc.b2b.api
             role="user",
             messages=[],
             createdAt=utc_now,
             updatedAt=utc_now
         )
+        
+        self.chat_state["messages"].append({
+            "role": "system",
+            "content": [{
+                "type": "text",
+                "text": "You are a helpful assistant.",
+                "tokensUsed": 0
+            }]
+        })
         
         self.client = Client()
         
@@ -56,6 +65,5 @@ class Chatbot:
             })
             
 if __name__ == "__main__":
-    user_id = input("Enter your user ID: ")
-    chatbot = Chatbot(user_id)
+    chatbot = Chatbot()
     asyncio.run(chatbot.chat())
