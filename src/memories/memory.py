@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Memory:
-    def __init__(self, user_Id: str, thread_Id: str):
+    def __init__(self, user_Id: str):
         self.memory_namespace = ("memories", user_Id)
         
     def init_az_memory(self):

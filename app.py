@@ -41,8 +41,7 @@ class Chatbot:
             
             respose = await self.client.main(
                 user_id = self.chat_state["client_id"],
-                thread_id = self.chat_state["id"],
-                chat_messages = self.chat_state["messages"]
+                messages = self.chat_state["messages"]
             )
             
             print(f"Assistant: {respose}")
