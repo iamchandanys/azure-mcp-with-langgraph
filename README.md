@@ -43,19 +43,23 @@ Learn more: [Azure MCP Server Overview](https://learn.microsoft.com/en-us/azure/
 ## Setup
 
 1. **Clone the repository:**
-   ```sh
+
+  ```sh
   git clone https://github.com/iamchandanys/mcp-with-langgraph.git
-   cd mcp-with-langgraph
-   ```
+  cd mcp-with-langgraph
+  ```
 
 2. **Install dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
+
+  ```sh
+  pip install -r requirements.txt
+  ```
 
 3. **Set up environment variables:**
-   - Create a `.env` file with your Azure Cosmos DB and other required credentials:
-     ```
+
+  - Create a `.env` file with your Azure Cosmos DB and other required credentials:
+
+    ```
     AZ_EMC_COSMOS_DB_CONNECTION_STRING=...
     AZ_EMC_COSMOS_DB_SITES_DATABASE_NAME=...
     AZ_EMC_COSMOS_DB_CHAT_HISTORY_CONTAINER_NAME=...
@@ -68,7 +72,7 @@ Learn more: [Azure MCP Server Overview](https://learn.microsoft.com/en-us/azure/
     AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
     OPENAI_API_VERSION=2025-01-01-preview
     AZURE_OPENAI_DEPLOYMENT_NAME=your_azure_openai_deployment_name
-     ```
+    ```
 
 ## Usage
 
@@ -114,11 +118,5 @@ python app-console.py
 - Add new tools by creating new servers in `src/servers/`.
 - Customize prompts in [`src/prompts/prompt.py`](src/prompts/prompt.py).
 - Modify chat state schemas in [`src/states/chat_state_v2.py`](src/states/chat_state_v2.py).
-
-## License
-
-MIT License
-
----
 
 **For more details, see the code in [`src/`](src/) and the API implementation
