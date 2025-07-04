@@ -11,7 +11,7 @@ from src.states.chat_state_v2 import Message
 load_dotenv()
 
 class Client:
-    async def main(self, user_id: str, messages: List[Message]) -> str:
+    async def main(self, user_id: str, messages: List[Message]) -> dict:
         """
         Main function to handle the client operations.
         
@@ -82,6 +82,7 @@ class Client:
             input = {"messages": history},
         )
         
-        return response["messages"][-1].content
-        
-        
+        return {
+            "response": response["messages"][-1].content,
+            "tokens_used": response["messages"][-1].response_metadata["token_usage"]["total_tokens"]
+        }
