@@ -6,8 +6,10 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "azure-cosmos>=4.9.0",
+    "fastapi>=0.115.14",
     "langchain-mcp-adapters>=0.1.7",
     "langchain[openai]>=0.3.26",
     "langgraph>=0.5.0",
     "mcp>=1.10.1",
+    "uvicorn>=0.35.0",
 ]

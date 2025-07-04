@@ -77,7 +77,7 @@ class Chatbot:
             ChatRepository().update_chat(
                 chat_state=self.chat_state
             )
-            
+        
 if __name__ == "__main__":
     chatbot = Chatbot()
     asyncio.run(chatbot.chat())
