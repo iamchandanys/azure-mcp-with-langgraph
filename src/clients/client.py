@@ -77,6 +77,14 @@ class Client:
             prompt=system_message,
         )
         
+        # async for event in agent.astream(
+        #     {
+        #     "messages": history
+        #     }
+        # ):
+        #     for value in event.values():
+        #         print(value["messages"])  # Print the last message content from each event
+        
         # Invoke the agent with a user message
         response = await agent.ainvoke(
             input = {"messages": history},

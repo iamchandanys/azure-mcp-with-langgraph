@@ -7,8 +7,17 @@ from datetime import datetime, timezone
 from src.services.cosmos_service.chat_repository import ChatRepository
 from fastapi import FastAPI
 from fastapi import Body
+from fastapi.middleware.cors import CORSMiddleware
     
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Update with your frontend's URL and port
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/api/XChatBot/InitChat/{client_id}/{product_id}")
 async def init_chat(client_id: str, product_id: str):
