@@ -60,11 +60,21 @@ class Prompt:
                             "null"
                         ]
                     }},
+                    "PolicyNumber": {{
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }},
                     "DateOfIncident": {{
                         "type": [
                             "string",
                             "null"
                         ]
+                    }},
+                    "CreatedAt": {{
+                        "type": "string",
+                        "format": "date-time"
                     }},
                 }},
                 "required": [
@@ -75,7 +85,9 @@ class Prompt:
                     "Email",
                     "MobileCode",
                     "Mobile",
-                    "DateOfIncident"
+                    "PolicyNumber",
+                    "DateOfIncident",
+                    "CreatedAt"
                 ]
             }}
             ```
