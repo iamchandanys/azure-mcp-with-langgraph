@@ -13,132 +13,72 @@ class Prompt:
             
             We have claims COSMOS DB collection with the following schema:
             
-            \`\`\`jsonc
+            ```jsonc
             // File: claims.schema.json
             {{
                 "type": "object",
                 "properties": {{
                     "PartitionKey": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }},
                     "id": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                    }},
-                    "TypeOfClaim": {{
-                    "type": "integer"
-                    }},
-                    "PolicyNumber": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }},
                     "Name": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }},
                     "Surname": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }},
                     "Email": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }},
                     "MobileCode": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }},
                     "Mobile": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }},
                     "DateOfIncident": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }},
-                    "LocationOfIncident": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                    }},
-                    "Details": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                    }},
-                    "ClaimStatus": {{
-                    "type": "integer"
-                    }},
-                    "CreatedAt": {{
-                    "type": "string",
-                    "format": "date-time"
-                    }},
-                    "CreatedBy": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                    }},
-                    "ModifiedAt": {{
-                    "type": "string",
-                    "format": "date-time"
-                    }},
-                    "ModifiedBy": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                    }},
-                    "ContactId": {{
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                    }}
                 }},
                 "required": [
                     "PartitionKey",
                     "id",
-                    "TypeOfClaim",
-                    "PolicyNumber",
                     "Name",
                     "Surname",
                     "Email",
                     "MobileCode",
                     "Mobile",
-                    "DateOfIncident",
-                    "LocationOfIncident",
-                    "Details",
-                    "ClaimStatus",
-                    "CreatedAt",
-                    "CreatedBy",
-                    "ModifiedAt",
-                    "ModifiedBy",
-                    "ContactId"
+                    "DateOfIncident"
                 ]
             }}
-            \`\`\`
+            ```
             
             Now, whenever I ask you to produce a JSON call to our `queryCosmos` tool, select *only* fields as defined above.
         """

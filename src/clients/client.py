@@ -26,21 +26,12 @@ class Client:
         client = MultiServerMCPClient(
             connections=
             {
-                    # "math": {
-                    #     "command": "python",
-                    #     "args": ["./src/servers/mathserver.py"], # Ensure this is the correct path to your math_server.py file
-                    #     "transport": "stdio",
-                    # },
-                    # "weather": {
-                    #     "url": "http://localhost:8000/mcp",
-                    #     "transport": "streamable_http",
-                    # },
-                    "azure": {
-                        "command": "npx",
-                        "args": ["-y", "@azure/mcp@latest", "server", "start"],
-                        "env": None,
-                        "transport": "stdio"
-                    }
+                "azure": {
+                    "command": "npx",
+                    "args": ["-y", "@azure/mcp@latest", "server", "start"],
+                    "env": None,
+                    "transport": "stdio"
+                }
             } 
         )
         
@@ -50,7 +41,8 @@ class Client:
         # Initialize the memory with user and thread IDs
         memory = Memory(user_Id=user_id)
         memory.init_az_memory()
-        az_memories = memory.get_az_memories()
+        memory.init_user_memory(user_question=messages[-1]["content"][0]["text"])
+        az_memories = memory.get_memories()
         
         # Get the system prompt with the Azure memories
         system_prompt = Prompt().get_system_prompt(az_memories)
@@ -76,14 +68,6 @@ class Client:
             tools,
             prompt=system_message,
         )
-        
-        # async for event in agent.astream(
-        #     {
-        #     "messages": history
-        #     }
-        # ):
-        #     for value in event.values():
-        #         print(value["messages"])  # Print the last message content from each event
         
         # Invoke the agent with a user message
         response = await agent.ainvoke(
