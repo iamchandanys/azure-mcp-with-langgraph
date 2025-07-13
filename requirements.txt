@@ -6,5 +6,6 @@ azure-cosmos
 fastapi
 uvicorn
 numpy
+azure-cosmos
 
 # langchain.embeddings
