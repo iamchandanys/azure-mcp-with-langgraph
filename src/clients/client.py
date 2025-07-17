@@ -7,6 +7,8 @@ from src.memories.memory import Memory
 from src.prompts.prompt import Prompt
 from typing import List
 from src.states.chat_state_v2 import Message
+import psutil
+import asyncio
 
 load_dotenv()
 
@@ -23,20 +25,41 @@ class Client:
             str: The response from the agent after processing the messages.
         """        
         
+        # Function to get azmcp processes
+        def get_azmcp_processes():
+            processes = []
+            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+                try:
+                    if proc.info['cmdline']:
+                        cmdline = ' '.join(proc.info['cmdline'])
+                        if 'node' in proc.info['name'].lower() and 'azmcp' in cmdline:
+                            processes.append(proc.info['pid'])
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    pass
+            return set(processes)
+
+        print("azmcp processes before get_tools:", get_azmcp_processes())
+        
+        await asyncio.sleep(3)
+        
         client = MultiServerMCPClient(
             connections=
             {
                 "azure": {
                     "command": "npx",
-                    "args": ["-y", "@azure/mcp@latest", "server", "start"],
+                    "args": ["-y", "@azure/mcp@0.3.2", "server", "start"],
                     "env": None,
                     "transport": "stdio"
                 }
-            } 
+            }
         )
-        
+
         # Get the tools available from the MCP client
         tools = await client.get_tools()
+        
+        await asyncio.sleep(3)
+        
+        print("azmcp processes after get_tools:", get_azmcp_processes())
         
         # Initialize the memory with user and thread IDs
         memory = Memory(user_Id=user_id)
