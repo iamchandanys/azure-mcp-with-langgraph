@@ -24,8 +24,8 @@ class Memory:
         store.put(self.memory_namespace, str(uuid.uuid4()), {"text": f"Azure subscription ID: {os.getenv("AZ_SUBSCRIPTION_ID")}"})
         store.put(self.memory_namespace, str(uuid.uuid4()), {"text": f"Azure COSMOS DB account name: {os.getenv("AZ_COSMOS_DB_ACCOUNT_NAME")}"})
         store.put(self.memory_namespace, str(uuid.uuid4()), {"text": f"Azure COSMOS DB Database name: {os.getenv("AZ_COSMOS_DB_DATABASE_NAME")}"})
-        store.put(self.memory_namespace, str(uuid.uuid4()), {"text": f"Azure COSMOS DB claims Container name: {os.getenv("AZ_COSMOS_DB_CLAIMS_CONTAINER_NAME")}"})
-        
+        store.put(self.memory_namespace, str(uuid.uuid4()), {"text": f"Azure COSMOS DB users Container name: {os.getenv("AZ_COSMOS_DB_USERS_CONTAINER_NAME")}"})
+
         # Retrieve all memories
         memories = store.search(self.memory_namespace)
         

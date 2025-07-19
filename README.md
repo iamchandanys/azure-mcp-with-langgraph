@@ -66,7 +66,7 @@ uv add -r requirements.txt
 
   - `AZURE_OPENAI_API_KEY`: API key for authenticating requests to Azure OpenAI.
   - `AZURE_OPENAI_ENDPOINT`: Endpoint URL for Azure OpenAI service.
-  - `OPENAI_API_VERSION`: Specifies the API version to use for Azure OpenAI.
+  - `AZURE_OPENAI_API_VERSION`: Specifies the API version to use for Azure OpenAI.
   - `AZURE_TEXT_EMBEDDING_ADA_002_KEY`: API key for Azure Text Embedding ADA-002 model.
 
   - `AZ_SUBSCRIPTION_ID`: Azure subscription identifier.
